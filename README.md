@@ -1,1 +1,103 @@
-Initializing
+# Repolex Knowledge Graph of python-poetry/crashtest
+
+RDF knowledge graph data for [python-poetry/crashtest](https://github.com/python-poetry/crashtest), parsed by [repolex](https://repolex.ai).
+
+> **Note**: This data is experimental and subject to change without notice.
+
+## How to use this data
+
+The easiest way to get started is to install the [rlex](https://github.com/repolex-ai/rlex) query tool:
+
+```bash
+cargo install --git https://github.com/repolex-ai/rlex
+```
+
+Verify the install:
+
+```bash
+rlex --help
+```
+
+**rlex is designed to be used primarily by LLMs in a terminal.** Start up your favorite AI assistant and ask it to use rlex. It handles the SPARQL — you just ask questions in plain English.
+
+To load this repo's data:
+
+```bash
+rlex download python-poetry/crashtest
+```
+
+Consult `rlex --help` for other options, including SPARQL queries, HTTP server, and interactive visualization.
+
+## Data structure
+
+All data is stored as gzip-compressed [N-Quads](https://www.w3.org/TR/n-quads/) (`.nq.gz`), a standard RDF format that can be loaded into any triplestore or graph database.
+
+```
+.
+├── aggregate
+│   ├── ast
+│   │   └── c9b7dfa116e97e85022aa0abb35dba4247de3d5a
+│   │       └── chunk-001.nq.gz
+│   └── repolex
+│       └── c9b7dfa116e97e85022aa0abb35dba4247de3d5a
+│           └── chunk-001.nq.gz
+├── blob
+│   ├── 0638a43c727172d8d6a94af7f09ffbf8bce9635c.nq.gz
+│   ├── 1b282c3653e5c992f64d4b98efb928876fd3acb5.nq.gz
+│   ├── 209687603e2f8f88de23edfb72e81a63d7ce3ebe.nq.gz
+│   ├── 230c44fe87c263f0c0838e57e91ede91f75fff95.nq.gz
+│   ├── 2d247749c7b1163e6f758a6c466a520d24e89196.nq.gz
+│   ├── 386c9304a646e2139dcecb81dcd5c2e0a6197eba.nq.gz
+│   ├── 46f44c14fc2d14572675b495de8a363c7f2d3f32.nq.gz
+│   ├── 5035788f35735ae24d123e3a297593a4ede6ab82.nq.gz
+│   ├── 5b8a9c6ef0b54f2ad9c2f1b8753ef793d78a9d53.nq.gz
+│   ├── 5bcb57abaf581d11f4b4b4b44f5b8e4d3ad15033.nq.gz
+│   ├── 7a99175c76d0259459912af13d262f746ea6ef71.nq.gz
+│   ├── 7ce7f63d26992e55bd62797418d560fac01f98e6.nq.gz
+│   ├── 86d777e9b9273820ec9646432ba02cf916aa18db.nq.gz
+│   ├── 8c93e0f570675c3c9f5109cac9b7c7fedbba7c65.nq.gz
+│   ├── 995eade30ce143d6b667217abe2060a945799a96.nq.gz
+│   ├── 9a02f42f18f91dc05b3351de29a2ecf809a0bba9.nq.gz
+│   ├── a8df68217672061b2f63eda472af21e8d45d1e7d.nq.gz
+│   ├── b89b5e9887ca6d55e1b25fb9c553ea70b2997259.nq.gz
+│   ├── bc9178cd39f1832e99bae5875a613fce6868bb6d.nq.gz
+│   ├── bf47a11ce84f9206fc30824285ff18a0985b1e46.nq.gz
+│   ├── d7b0ece3e43b116568784ef0309af7651134ecde.nq.gz
+│   ├── d9e59faba28760c2fcc761a23ff53f22007a7dd6.nq.gz
+│   ├── e69de29bb2d1d6434b8b29ae775ad8c2e48c5391.nq.gz
+│   └── ef038892447f35feb45810ceed08920fff7f5760.nq.gz
+├── branch
+│   └── branch.nq.gz
+├── commit
+│   └── commit.nq.gz
+├── filetree
+│   └── c9b7dfa116e97e85022aa0abb35dba4247de3d5a.nq.gz
+├── issue
+│   └── issue.nq.gz
+├── pr
+│   └── pr.nq.gz
+└── tag
+    └── tag.nq.gz
+
+13 directories, 32 files
+```
+
+| Directory | What it contains |
+|-----------|-----------------|
+| `blob/` | Per-file AST graphs, content-addressed by git blob SHA. Each file in the source repo gets its own graph. |
+| `aggregate/ast/` | Combined AST graph per parsed commit. Merges all blob graphs for a snapshot of the entire codebase at that point. |
+| `aggregate/lsp/` | Language Server Protocol enrichment: resolved symbols, definitions, references, and type information. |
+| `aggregate/dataflow/` | Interprocedural data flow edges between functions and modules. |
+| `aggregate/repolex/` | Combined graph (AST + LSP + dataflow) per commit. |
+| `commit/` | Git commit metadata (author, date, message, parent links). |
+| `branch/` | Branch metadata. |
+| `tag/` | Tag metadata. |
+| `filetree/` | File tree snapshots per commit (which files existed and their blob SHAs). |
+| `audit/` | Code architecture and graph audit reports per commit. |
+
+## Source repository
+
+[python-poetry/crashtest](https://github.com/python-poetry/crashtest)
+
+---
+*Parsed on 2026-10-10 by [repolex](https://repolex.ai)*
