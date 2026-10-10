@@ -8,7 +8,7 @@
     {
       "@id": "https://repolex.ai/r/python-poetry/crashtest/commit/c9b7dfa116e97e85022aa0abb35dba4247de3d5a",
       "git:hexsha": "c9b7dfa116e97e85022aa0abb35dba4247de3d5a",
-      "repolex:parseStatus": "metadata_complete",
+      "repolex:parseStatus": "ast_complete",
       "git:tagName": "0.4.1"
     },
     {
